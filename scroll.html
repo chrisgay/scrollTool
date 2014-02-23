@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<script type="text/javascript" src="./jquery-1.11.0.js" ></script>
+		
+		<script>
+		jQuery.extend(jQuery.expr[':'],{
+		    inView: function(a) {
+		        var st = (document.documentElement.scrollTop || document.body.scrollTop),
+		            ot = jQuery(a).offset().top,
+		            wh = (window.innerHeight && window.innerHeight < jQuery(window).height()) ? window.innerHeight : jQuery(window).height();
+		        return ot > st && ($(a).height() + ot) < (st + wh);
+		    }
+		});
+
+		</script>
+		
+		<style>
+		div#whatever0 {
+			width: 100%;
+			height: 3000px;
+			background-color: #FF0000;
+		}
+		
+		div#whatever1 {
+			width: 100%;
+			height: 3000px;
+			background-color: #3366ff;
+		}
+		
+		div#whatever2 {
+			width: 100%;
+			height: 3000px;
+			background-color: #009933;
+		}
+		
+		
+		.navmenu {
+			position: fixed !important;
+			top: 0px;
+		}
+		
+		li {
+			display: inline;
+		}
+		
+		#navbar {
+			width:100%;
+			height: 25px;
+			background: #FFF;
+			position:fixed;
+		}
+		
+		</style>
+		
+		
+		
+	</head>
+	
+	<body>
+	<div id="navbar">
+		<ul class="navmenu">	
+			<li><a class="navlinks" id="section0" href="#link">Section 0</a></li>
+			<li><a class="navlinks" id="section1" href="#link">Section 1</a></li>
+			<li><a class="navlinks" id="section2" href="#link">Section 2</a></li>
+		</ul>
+	</div>
+		<script>
+		jQuery('#section0').click(function() {
+			if (jQuery('#whatever0').is(':not(:inView)')) {
+			    jQuery('html,body').animate({ 
+			         scrollTop: jQuery('#whatever0').offset().top 
+			    }, 3000);
+			}
+		});
+		
+		jQuery('#section1').click(function() {
+			if (jQuery('#whatever1').is(':not(:inView)')) {
+			    jQuery('html,body').animate({ 
+			         scrollTop: jQuery('#whatever1').offset().top 
+			    }, 3000);
+			}
+		});
+		
+		jQuery('#section2').click(function() {
+			if (jQuery('#whatever2').is(':not(:inView)')) {
+			    jQuery('html,body').animate({ 
+			         scrollTop: jQuery('#whatever2').offset().top 
+			    }, 3000);
+			}
+		});
+		</script>
+		
+		
+		<div id="whatever0">
+		</div>
+		
+		<div id="whatever1">
+		</div>
+		
+		<div id="whatever2">
+		</div>
+		
+	</body>
+	
+</html>
